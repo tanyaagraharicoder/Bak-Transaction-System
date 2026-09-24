@@ -1,12 +1,18 @@
 const express = require("express");
 
+const cookieParser = require("cookie-parser")
+
+
+const authRouter = require("./routes/auth.routes")
+
 const app = express();
 
 app.use(express.json());
 
+app.use(cookieParser())
+
 // routes/middleware here
 
+app.use("/api/auth" , authRouter)
+
 module.exports = app;
-app.listen(3000 , ()=>{
-     console.log(" serer is rnning on the the window ");
-})
